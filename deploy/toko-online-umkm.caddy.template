@@ -4,7 +4,8 @@
 # Dirender dan dipasang oleh deploy/deploy.sh.
 
 # Baris pertama blok situs wajib "import gerbang_staging" (snippet di /etc/caddy/Caddyfile, dikelola agen utama).
-__TOKO_HOST__ {
+# Mode tunnel (Tailscale Funnel): TLS ditangani Funnel; Caddy melayani HTTP polos di localhost.
+http://__TOKO_HOST__ {
 	import gerbang_staging
 	encode zstd gzip
 
