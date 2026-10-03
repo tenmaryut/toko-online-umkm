@@ -1,5 +1,5 @@
 import { type Browser, expect, type Page, test } from "@playwright/test";
-import { buka, masukSebagai, tungguPath } from "./bantu";
+import { buka, masukSebagai, RUN, tungguPath } from "./bantu";
 
 /**
  * Animasi putaran 2: aktif secara normal, dan dimatikan oleh prefers-reduced-motion: reduce.
@@ -83,7 +83,7 @@ for (const reduced of [false, true]) {
 
     // Toast meluncur masuk setelah menyimpan kategori.
     await buka(page, "/admin/kategori");
-    await page.locator("#kat-baru-name").fill(`Uji Gerak ${reduced ? "R" : "N"}`);
+    await page.locator("#kat-baru-name").fill(`Uji Gerak ${reduced ? "R" : "N"} ${RUN}`);
     await page.getByRole("button", { name: "Tambah kategori" }).click();
     const toast = page.getByTestId("toast").first();
     await expect(toast).toBeVisible();

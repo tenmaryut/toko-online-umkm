@@ -28,3 +28,5 @@ Toko online demo untuk portofolio Tenma: Next.js 16 App Router + TypeScript stri
 - Tidak boleh ada alamat situs (domain staging atau IP server) di kode, konten, atau file deploy; alamat hanya dari `domain.env` (runtime: env `SITE_URL`, `PORTOFOLIO_URL`). Folder `docs/` (hasil uji) dikecualikan.
 - Animasi: hanya transform/opacity, dibungkus `@media (prefers-reduced-motion: no-preference)` di `globals.css`; konten tidak boleh menunggu JavaScript untuk tampil. Uji di `tests/e2e/gerak.spec.ts`.
 - `word-spacing: 0.1em` di body (spasi Plus Jakarta Sans sempit) dan diwariskan ke elemen form.
+- Mode tunnel (Tailscale Funnel → Caddy 127.0.0.1:80 → app 127.0.0.1:3003): IP pengunjung dari `ipKlien()` (X-Forwarded-For dari kanan, lewati loopback); jangan pakai header `Tailscale-User-*`. Uji: `npm run uji-rate-limit`, `npm run test:e2e:publik`.
+- Hook pre-commit/pre-push menolak IP VPS dan alamat staging; laporan uji yang memuat alamat staging disamarkan dulu dengan `samarkan-staging`. Jangan push (agen utama yang mempublikasikan).

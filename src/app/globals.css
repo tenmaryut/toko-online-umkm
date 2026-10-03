@@ -121,6 +121,13 @@ optgroup {
     repeating-linear-gradient(-45deg, rgb(36 28 21 / 0.035) 0 6px, transparent 6px 12px);
 }
 
+/* Bagian di bawah lipatan: browser melewati style/layout/paint sampai bagian itu hampir terlihat.
+   contain-intrinsic-size menjaga tinggi perkiraan agar tidak terjadi pergeseran tata letak. */
+.tunda-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 /* Honeypot anti-spam: tersembunyi dari manusia dan pembaca layar, tetap ada untuk bot. */
 .kolom-jebakan {
   position: absolute !important;

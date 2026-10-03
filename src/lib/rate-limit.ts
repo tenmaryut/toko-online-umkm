@@ -50,21 +50,47 @@ export function buatRateLimiter(opsi: { batas: number; jendelaMs: number; maksKu
   };
 }
 
+/** Proxy yang dipercaya hanya loopback: Caddy dan Tailscale Funnel di server yang sama. */
+export function proxyTepercaya(ip: string): boolean {
+  return ip === "::1" || /^127\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(ip) || /^::ffff:127\./i.test(ip);
+}
+
+/** Rapikan satu entri X-Forwarded-For: buang kurung IPv6 dan port. */
+function normalkanIp(entri: string): string {
+  const s = entri.trim();
+  const v6 = s.match(/^\[([0-9a-f:.]+)\](?::\d+)?$/i);
+  if (v6) return v6[1]!.toLowerCase();
+  const v4 = s.match(/^(\d{1,3}(?:\.\d{1,3}){3}):\d+$/);
+  if (v4) return v4[1]!;
+  return s.toLowerCase();
+}
+
 /**
- * IP klien dari header. Aplikasi hanya mendengarkan di 127.0.0.1 di belakang Caddy,
- * dan Caddy mengisi X-Forwarded-For; entri terakhir adalah alamat yang dilihat Caddy.
+ * IP pengunjung asli dari X-Forwarded-For.
+ * Rantai: pengunjung → Tailscale Funnel (menambahkan IP pengunjung) → Caddy di 127.0.0.1
+ * (menambahkan 127.0.0.1) → aplikasi, yang hanya mendengarkan 127.0.0.1. Daftar ditelusuri dari
+ * kanan dan proxy tepercaya (loopback) dilewati, sehingga nilai palsu yang dikirim pengunjung
+ * di sisi kiri header tidak pernah dipakai.
  */
 export function ipKlien(header: Headers): string {
   const xff = header.get("x-forwarded-for");
-  if (xff) {
-    const bagian = xff
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-    const terakhir = bagian.at(-1);
-    if (terakhir) return terakhir.slice(0, 64);
+  if (!xff) return "lokal";
+  const daftar = xff
+    .split(",")
+    .map(normalkanIp)
+    .filter(Boolean);
+  for (let i = daftar.length - 1; i >= 0; i--) {
+    const ip = daftar[i]!;
+    if (!proxyTepercaya(ip)) return ip.slice(0, 64);
   }
-  return header.get("x-real-ip")?.slice(0, 64) ?? "tidak-diketahui";
+  return daftar[0] ?? "lokal";
+}
+
+/** Salinan header dengan X-Forwarded-For berisi IP pengunjung asli saja (untuk dicatat Better Auth di sesi). */
+export function headerDenganIpAsli(header: Headers): Headers {
+  const salinan = new Headers(header);
+  salinan.set("x-forwarded-for", ipKlien(header));
+  return salinan;
 }
 
 /** Format durasi tunggu yang ramah dibaca, mis. "3 menit". */

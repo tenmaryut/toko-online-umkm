@@ -4,7 +4,7 @@ import { IkonPanahKanan, IkonStruk, IkonTruk } from "@/components/ikon";
 import { IlustrasiHero } from "@/components/ilustrasi";
 import { JsonLd } from "@/components/json-ld";
 import { GridProduk } from "@/components/kartu-produk";
-import { ambilKategori, ambilProdukTerlaris, ambilProdukUnggulan } from "@/db/queries";
+import { ambilKategori, ambilProdukUnggulan } from "@/db/queries";
 import { AKUN_DEMO, SITUS, urlAbsolut } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,7 +28,6 @@ const GAMBAR_KATEGORI: Record<string, string> = {
 export default function Beranda() {
   const kategori = ambilKategori();
   const unggulan = ambilProdukUnggulan(8);
-  const terlaris = ambilProdukTerlaris(4);
 
   return (
     <>
@@ -84,12 +83,14 @@ export default function Beranda() {
               </div>
             </dl>
           </div>
-          <IlustrasiHero className="h-auto w-full drop-shadow-[0_24px_40px_rgb(36_28_21/0.18)]" />
+          <div className="overflow-hidden rounded-[2.25rem] shadow-[0_24px_40px_-12px_rgb(36_28_21/0.28)]">
+            <IlustrasiHero className="block h-auto w-full" />
+          </div>
         </div>
       </section>
 
       {/* Kategori */}
-      <section aria-labelledby="judul-kategori" className="latar-anyaman py-14">
+      <section aria-labelledby="judul-kategori" className="latar-anyaman tunda-render py-14">
         <div className="wadah">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -130,7 +131,7 @@ export default function Beranda() {
       </section>
 
       {/* Produk pilihan */}
-      <section aria-labelledby="judul-pilihan" className="wadah py-14">
+      <section aria-labelledby="judul-pilihan" className="wadah tunda-render py-14">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="judul-pilihan" className="judul-bagian">
@@ -148,7 +149,7 @@ export default function Beranda() {
       </section>
 
       {/* Cara kerja demo */}
-      <section id="cara-kerja" aria-labelledby="judul-cara-kerja" className="bg-lumut text-kertas">
+      <section id="cara-kerja" aria-labelledby="judul-cara-kerja" className="tunda-render bg-lumut text-kertas">
         <div className="wadah grid grid-cols-1 gap-10 py-14 lg:grid-cols-[1.2fr_minmax(0,1fr)]">
           <div>
             <h2 id="judul-cara-kerja" className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
@@ -213,16 +214,6 @@ export default function Beranda() {
         </div>
       </section>
 
-      {/* Terlaris */}
-      <section aria-labelledby="judul-terlaris" className="wadah py-14">
-        <h2 id="judul-terlaris" className="judul-bagian">
-          Paling sering dibeli
-        </h2>
-        <p className="mt-2 text-arang-2">Dihitung dari pesanan contoh di data demo.</p>
-        <div className="mt-8">
-          <GridProduk produk={terlaris} />
-        </div>
-      </section>
     </>
   );
 }

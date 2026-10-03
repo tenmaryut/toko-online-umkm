@@ -18,6 +18,8 @@ EnvironmentFile=/etc/web-toko-online-umkm/env
 Environment=NODE_ENV=production PORT=3003 HOSTNAME=127.0.0.1 TZ=Asia/Jakarta NEXT_TELEMETRY_DISABLED=1
 Environment=DATABASE_PATH=/var/lib/web-toko-online-umkm/toko.db UPLOAD_DIR=/var/lib/web-toko-online-umkm/uploads
 Environment=MIGRATIONS_DIR=/srv/web/toko-online-umkm/drizzle
+# /uji-galat menampilkan halaman 500 khusus (contoh untuk demo dan test terhadap URL publik).
+Environment=AKTIFKAN_RUTE_UJI=1
 # Kredensial admin asli dibaca systemd (root) lalu diberikan ke layanan lewat $CREDENTIALS_DIRECTORY.
 LoadCredential=admin:/root/tenma-ws/portofolio/rahasia/toko-online-umkm.txt
 ExecStartPre=/usr/bin/node /srv/web/toko-online-umkm/scripts/db-setup.mjs

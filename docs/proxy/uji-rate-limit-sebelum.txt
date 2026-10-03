@@ -1,0 +1,19 @@
+# Uji rate limit per pengunjung SEBELUM perbaikan (kode lama memakai entri terakhir X-Forwarded-For = 127.0.0.1)
+# 2026-10-03T10:32:53+07:00
+Target: http://127.0.0.1:80 (Host: toko.tail482cb9.ts.net), email uji: penebak-muru6tob@contoh.test
+Batas: 5 percobaan per 15 menit per (IP pengunjung + email), 30 per 15 menit per IP.
+
+┌─────────┬──────────────────────┬────────────────────────────┬───────────┬─────────────────────────────────────────────┐
+│ (index) │ pengunjung           │ X-Forwarded-For            │ percobaan │ hasil                                       │
+├─────────┼──────────────────────┼────────────────────────────┼───────────┼─────────────────────────────────────────────┤
+│ 0       │ 'A'                  │ '203.0.113.10'             │ 1         │ 'diproses (Email atau kata sandi salah)'    │
+│ 1       │ 'A'                  │ '203.0.113.10'             │ 2         │ 'diproses (Email atau kata sandi salah)'    │
+│ 2       │ 'A'                  │ '203.0.113.10'             │ 3         │ 'diproses (Email atau kata sandi salah)'    │
+│ 3       │ 'A'                  │ '203.0.113.10'             │ 4         │ 'diproses (Email atau kata sandi salah)'    │
+│ 4       │ 'A'                  │ '203.0.113.10'             │ 5         │ 'diproses (Email atau kata sandi salah)'    │
+│ 5       │ 'A'                  │ '203.0.113.10'             │ 6         │ 'DIBATASI (Terlalu banyak percobaan masuk)' │
+│ 6       │ 'B'                  │ '198.51.100.20'            │ 1         │ 'DIBATASI (Terlalu banyak percobaan masuk)' │
+│ 7       │ 'A (memalsukan XFF)' │ '192.0.2.99, 203.0.113.10' │ 7         │ 'DIBATASI (Terlalu banyak percobaan masuk)' │
+└─────────┴──────────────────────┴────────────────────────────┴───────────┴─────────────────────────────────────────────┘
+
+GAGAL: perilaku rate limit tidak sesuai.

@@ -4,7 +4,7 @@ import { APIError } from "better-auth/api";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getAuth } from "@/lib/auth";
-import { buatRateLimiter, formatTunggu, ipKlien } from "@/lib/rate-limit";
+import { buatRateLimiter, formatTunggu, headerDenganIpAsli, ipKlien } from "@/lib/rate-limit";
 import { formKeObjek, galatPerKolom, skemaDaftar, skemaMasuk, tujuanAman } from "@/lib/validation";
 
 export type HasilForm = {
@@ -43,7 +43,7 @@ export async function masukAction(_sebelum: HasilForm, formData: FormData): Prom
   try {
     const masuk = await getAuth().api.signInEmail({
       body: { email: hasil.data.email, password: hasil.data.password },
-      headers: h,
+      headers: headerDenganIpAsli(h),
     });
     peran = (masuk.user as { role?: string }).role ?? "customer";
     batasLoginAkun.reset(kunciAkun);
@@ -69,7 +69,7 @@ export async function daftarAction(_sebelum: HasilForm, formData: FormData): Pro
   try {
     await getAuth().api.signUpEmail({
       body: { name: hasil.data.name, email: hasil.data.email, password: hasil.data.password },
-      headers: h,
+      headers: headerDenganIpAsli(h),
     });
   } catch (err) {
     if (err instanceof APIError) {

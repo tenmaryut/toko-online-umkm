@@ -1,5 +1,8 @@
 import type { Page } from "@playwright/test";
 
+/** Penanda unik per run, supaya data uji tidak bentrok saat test diulang terhadap situs publik. */
+export const RUN = Date.now().toString(36);
+
 /** Buka halaman dan tunggu sampai JavaScript selesai dimuat (komponen interaktif sudah terhidrasi). */
 export async function buka(page: Page, url: string) {
   await page.goto(url);

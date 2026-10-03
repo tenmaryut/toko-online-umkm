@@ -6,7 +6,7 @@ import { TandaLumbung } from "./logo";
 export function FooterToko() {
   const kategori = ambilKategori();
   return (
-    <footer className="mt-20 bg-lumut-tua text-kertas">
+    <footer className="tunda-render mt-20 bg-lumut-tua text-kertas">
       <svg viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" className="block h-8 w-full -translate-y-px bg-kertas sm:h-12">
         <path d="M0 60V34c160-30 330-36 520-10s380 30 560 4 260-26 360-10v42Z" fill="#233628" />
       </svg>

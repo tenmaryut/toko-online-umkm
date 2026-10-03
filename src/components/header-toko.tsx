@@ -14,7 +14,7 @@ export async function HeaderToko() {
   const admin = sesi?.user.role === "admin";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-garis/80 bg-kertas/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-garis/80 bg-kertas">
       <div className="wadah flex h-16 items-center gap-1 sm:gap-4">
         <Logo />
         <form action="/produk" role="search" className="relative ml-2 hidden max-w-sm flex-1 md:block lg:ml-6">

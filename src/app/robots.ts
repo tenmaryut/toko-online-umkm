@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/akun", "/checkout", "/keranjang", "/masuk", "/daftar"],
+        disallow: ["/admin", "/akun", "/checkout", "/keranjang", "/masuk", "/daftar", "/uji-galat"],
       },
     ],
     sitemap: `${urlSitus()}/sitemap.xml`,

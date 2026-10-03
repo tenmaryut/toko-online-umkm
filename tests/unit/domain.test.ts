@@ -5,7 +5,7 @@ import {
   kembalikanStokSaatBatal,
   transisiBerikutnya,
 } from "@/lib/order-status";
-import { buatRateLimiter, formatTunggu, ipKlien } from "@/lib/rate-limit";
+import { buatRateLimiter, formatTunggu, headerDenganIpAsli, ipKlien, proxyTepercaya } from "@/lib/rate-limit";
 import { buatSlug } from "@/lib/slug";
 import {
   skemaCheckout,
@@ -59,10 +59,25 @@ describe("rate limit", () => {
     expect(rl.cek("a", 2).ok).toBe(true);
   });
 
-  it("mengambil IP dari entri terakhir X-Forwarded-For (diisi Caddy)", () => {
-    expect(ipKlien(new Headers({ "x-forwarded-for": "1.2.3.4" }))).toBe("1.2.3.4");
-    expect(ipKlien(new Headers({ "x-forwarded-for": "6.6.6.6, 1.2.3.4" }))).toBe("1.2.3.4");
-    expect(ipKlien(new Headers())).toBe("tidak-diketahui");
+  it("memakai IP pengunjung asli di balik Funnel + Caddy (proxy tepercaya hanya loopback)", () => {
+    const ip = (xff?: string) => ipKlien(new Headers(xff === undefined ? {} : { "x-forwarded-for": xff }));
+    // Funnel menambahkan IP pengunjung, Caddy (127.0.0.1) menambahkan dirinya.
+    expect(ip("203.0.113.7, 127.0.0.1")).toBe("203.0.113.7");
+    // Nilai palsu dari pengunjung di sisi kiri diabaikan.
+    expect(ip("6.6.6.6, 203.0.113.7, 127.0.0.1")).toBe("203.0.113.7");
+    expect(ip("6.6.6.6, 1.2.3.4")).toBe("1.2.3.4");
+    // IPv6, kurung, dan port dirapikan; loopback IPv6 juga dipercaya.
+    expect(ip("[2001:db8::5]:443, ::1")).toBe("2001:db8::5");
+    expect(ip("198.51.100.9:5555, 127.0.0.1")).toBe("198.51.100.9");
+    // Semua lompatan dari server ini, atau tanpa proxy sama sekali.
+    expect(ip("127.0.0.1")).toBe("127.0.0.1");
+    expect(ip()).toBe("lokal");
+    expect(proxyTepercaya("127.0.0.1")).toBe(true);
+    expect(proxyTepercaya("::ffff:127.0.0.1")).toBe(true);
+    expect(proxyTepercaya("10.0.0.1")).toBe(false);
+    expect(headerDenganIpAsli(new Headers({ "x-forwarded-for": "9.9.9.9, 203.0.113.7, 127.0.0.1" })).get("x-forwarded-for")).toBe(
+      "203.0.113.7",
+    );
     expect(formatTunggu(5_000)).toBe("5 detik");
     expect(formatTunggu(125_000)).toBe("3 menit");
   });

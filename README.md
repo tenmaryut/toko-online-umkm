@@ -2,7 +2,7 @@
 
 Toko online full-stack untuk UMKM fiktif **Lumbung Kabut** (kopi, teh rempah, camilan, sambal, dan kriya dapur): katalog, keranjang, checkout dengan ongkir per zona dan pembayaran simulasi, akun pelanggan, serta dasbor admin. **Tidak ada transaksi nyata.**
 
-- Alamat situs: nilai `TOKO_URL` di `/root/tenma-ws/portofolio/domain.env` (lihat "Pindah domain").
+- Demo: https://toko.tail482cb9.ts.net (nilai `TOKO_URL` di `/root/tenma-ws/portofolio/domain.env`; lihat "Pindah domain").
 - Akun demo (ditampilkan juga di halaman masuk; data direset setiap pukul 00.00 WIB):
   - Pelanggan: `demo@lumbung-kabut.test` / `pelanggan123`
   - Admin: `admin-demo@lumbung-kabut.test` / `admindemo123`
@@ -38,14 +38,16 @@ Perintah lain: `npm run db:reset` (kembalikan data demo), `npm run art` (buat ul
 npm run typecheck && npm run lint
 npm test                        # Vitest: format harga, keranjang, ongkir, validasi, pesanan & stok
 npm run build                   # build standalone (diperlukan oleh test e2e)
-npm run test:e2e                # Playwright: jelajah → keranjang → checkout → admin ubah status, keamanan, SEO
+npm run test:e2e                # Playwright: jelajah → keranjang → checkout → admin ubah status, keamanan, SEO, gerak, proxy
+npm run test:e2e:publik         # test e2e yang sama terhadap URL publik (TOKO_URL dari domain.env)
+npm run uji-rate-limit          # uji rate limit per pengunjung lewat http://127.0.0.1:80 (Caddy) dengan X-Forwarded-For berbeda
 npm run screenshots             # cek responsif 360–1440 px + screenshot ke docs/screenshots/
 npm run rekam-animasi           # rekaman WebM animasi utama ke docs/animasi/
 ```
 
 Test gerak (`tests/e2e/gerak.spec.ts`, bagian dari `npm run test:e2e`) membuktikan animasi aktif secara normal dan mati saat reduced motion diemulasikan.
 
-Hasil Lighthouse mobile (2 Okt 2026) ada di `docs/lighthouse/`.
+Hasil Lighthouse mobile terhadap URL publik ada di `docs/lighthouse/`.
 
 ## Deploy
 
@@ -59,7 +61,16 @@ systemctl list-timers web-toko-online-umkm-reset.timer
 - Hasil build: `/srv/web/toko-online-umkm` (milik root, hanya-baca untuk layanan). Data runtime (SQLite + unggahan): `/var/lib/web-toko-online-umkm`.
 - Secret aplikasi: `/etc/web-toko-online-umkm/env` (600). Kredensial admin asli: `/root/tenma-ws/portofolio/rahasia/toko-online-umkm.txt` (600), dibaca layanan lewat `LoadCredential`.
 - Reset data demo: `web-toko-online-umkm-reset.timer` setiap 00.00 WIB (admin asli dipertahankan).
-- File Caddy `/etc/caddy/sites/toko-online-umkm.caddy` dibuat dari `deploy/toko-online-umkm.caddy.template`; baris pertama blok situsnya `import gerbang_staging` (gerbang kata sandi selama alamat masih staging, didefinisikan di `/etc/caddy/Caddyfile`).
+- File Caddy `/etc/caddy/sites/toko-online-umkm.caddy` dibuat dari `deploy/toko-online-umkm.caddy.template` dengan alamat `http://<host TOKO_URL>`; baris pertama blok situsnya `import gerbang_staging` (snippet di `/etc/caddy/Caddyfile` yang membuang header identitas akun Tailscale).
+
+## Di balik proxy (Tailscale Funnel)
+
+Situs dibuka publik lewat Tailscale Funnel, yang menangani HTTPS dan menyembunyikan IP server:
+pengunjung → Funnel → Caddy di `127.0.0.1:80` (mode tunnel, `trusted_proxies` 127.0.0.1) → aplikasi di `127.0.0.1:3003`.
+
+- **IP pengunjung asli**: proxy yang dipercaya hanya loopback (Funnel dan Caddy di server yang sama; aplikasi pun hanya mendengarkan 127.0.0.1). `ipKlien()` di `src/lib/rate-limit.ts` menelusuri `X-Forwarded-For` dari kanan dan melewati entri loopback, jadi IP yang ditambahkan Funnel yang dipakai untuk rate limit dan sesi. Nilai palsu yang dikirim pengunjung di sisi kiri header diabaikan. Header `Tailscale-User-*` dibuang Caddy dan tidak dipakai aplikasi.
+- **Skema https**: semua URL absolut (canonical, Open Graph, sitemap, data terstruktur) dibangun dari `SITE_URL` (https, dari domain.env); cookie sesi `__Secure-lk.session_token` dan cookie keranjang memakai atribut `Secure`; redirect memakai path relatif sehingga tetap di origin publik; CSP memuat `upgrade-insecure-requests`, dan halaman tidak memuat aset `http://`.
+- **Bukti**: `npm run uji-rate-limit` (hasil sebelum/sesudah perbaikan di `docs/proxy/`) dan `tests/e2e/proxy.spec.ts` (cookie `Secure`, URL absolut, redirect, tanpa mixed content).
 
 ## Pindah domain
 
@@ -67,9 +78,8 @@ Satu-satunya sumber alamat adalah `/root/tenma-ws/portofolio/domain.env` (`TOKO_
 
 1. Ubah `TOKO_URL` (format `https://nama-host`, tanpa path) di `domain.env`.
 2. Deploy ulang: `cd /root/tenma-ws/projects/toko-online-umkm && npm run deploy`. Skrip menulis `SITE_URL`/`PORTOFOLIO_URL` ke `/etc/web-toko-online-umkm/env`, membuat ulang file Caddy dari template dengan host baru, lalu me-restart layanan.
-3. Reload Caddy (sudah dilakukan skrip): `caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy`. Caddy mengambil sertifikat HTTPS untuk domain baru secara otomatis.
-
-Pastikan DNS domain baru sudah mengarah ke server sebelum deploy, supaya sertifikat bisa diterbitkan.
+3. Reload Caddy (sudah dilakukan skrip): `caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy`.
+4. Sesuaikan jalur masuk publik: dalam mode tunnel, Tailscale Funnel untuk host baru diatur agen utama; bila kelak memakai domain sendiri langsung ke server, Caddy kembali menangani HTTPS (alamat situs di template tanpa `http://`).
 
 ## Catatan
 

@@ -16,7 +16,9 @@
     "db:reset": "tsx scripts/reset-demo.ts",
     "art": "tsx scripts/generate-art.ts",
     "deploy": "bash deploy/deploy.sh",
-    "rekam-animasi": "playwright test --project=animasi"
+    "rekam-animasi": "playwright test --project=animasi",
+    "test:e2e:publik": "E2E_BASE_URL=$(sed -n \"s/^TOKO_URL=//p\" /root/tenma-ws/portofolio/domain.env) playwright test --project=e2e",
+    "uji-rate-limit": "node scripts/uji-rate-limit.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.7",

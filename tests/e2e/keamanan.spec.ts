@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { buka, masukSebagai, tungguPath } from "./bantu";
+import { buka, masukSebagai, RUN, tungguPath } from "./bantu";
 
 test("area admin dijaga di server: pelanggan mendapat 404", async ({ page }) => {
   await buka(page, "/masuk?kembali=/akun");
@@ -14,7 +14,7 @@ test("area admin dijaga di server: pelanggan mendapat 404", async ({ page }) => 
 test("rate limit login setelah 5 percobaan gagal", async ({ page }) => {
   await buka(page, "/masuk");
   const coba = async (i: number) => {
-    await page.getByLabel("Email").fill("penebak@contoh.test");
+    await page.getByLabel("Email").fill(`penebak-${RUN}@contoh.test`);
     await page.getByLabel("Kata sandi").fill(`salah-${i}`);
     // Tunggu respons Server Action tiap percobaan supaya urutannya pasti.
     await Promise.all([

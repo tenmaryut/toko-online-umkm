@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import sharp from "sharp";
-import { buka, masukSebagai, tungguPath } from "./bantu";
+import { buka, masukSebagai, RUN, tungguPath } from "./bantu";
 
 test("pelanggan baru bisa mendaftar dan langsung masuk", async ({ page }) => {
   await buka(page, "/daftar");
@@ -24,16 +24,19 @@ test("admin menambah kategori dan produk dengan unggah gambar", async ({ page })
 
   // Kategori baru
   await buka(page, "/admin/kategori");
-  await page.locator("#kat-baru-name").fill("Oleh-oleh Uji");
+  const kategori = `Oleh-oleh Uji ${RUN}`;
+  const produk = `Gula Semut Uji ${RUN} 250 g`;
+  const slugProduk = `gula-semut-uji-${RUN}-250-g`;
+  await page.locator("#kat-baru-name").fill(kategori);
   await page.getByRole("button", { name: "Tambah kategori" }).click();
   await expect(page.getByText("Kategori ditambahkan.").first()).toBeVisible();
-  await expect(page.getByText("/oleh-oleh-uji")).toBeVisible();
+  await expect(page.getByText(`/oleh-oleh-uji-${RUN}`)).toBeVisible();
 
   // Produk baru dengan gambar PNG 640×480 (akan dipotong persegi dan dikonversi ke WebP)
   const gambar = await sharp({ create: { width: 640, height: 480, channels: 3, background: "#c98b4b" } }).png().toBuffer();
   await buka(page, "/admin/produk/baru");
-  await page.getByLabel("Nama produk").fill("Gula Semut Uji 250 g");
-  await page.getByLabel("Kategori").selectOption({ label: "Oleh-oleh Uji" });
+  await page.getByLabel("Nama produk").fill(produk);
+  await page.getByLabel("Kategori").selectOption({ label: kategori });
   await page.getByLabel("Harga (Rp)").fill("Rp 27.500");
   await page.getByLabel("Stok").fill("9");
   await page.getByLabel("Deskripsi").fill("Produk uji yang dibuat oleh test e2e lewat dasbor admin.");
@@ -43,10 +46,10 @@ test("admin menambah kategori dan produk dengan unggah gambar", async ({ page })
   await expect(page.getByText("Produk ditambahkan.").first()).toBeVisible();
 
   // Tampil di toko dengan gambar unggahan yang disajikan dari luar folder build
-  await buka(page, "/produk/gula-semut-uji-250-g");
-  await expect(page.getByRole("heading", { level: 1, name: "Gula Semut Uji 250 g" })).toBeVisible();
+  await buka(page, `/produk/${slugProduk}`);
+  await expect(page.getByRole("heading", { level: 1, name: produk })).toBeVisible();
   await expect(page.getByTestId("harga-produk")).toHaveText("Rp 27.500");
-  const src = await page.getByRole("img", { name: "Ilustrasi kemasan Gula Semut Uji 250 g" }).getAttribute("src");
+  const src = await page.getByRole("img", { name: `Ilustrasi kemasan ${produk}` }).getAttribute("src");
   expect(src).toMatch(/^\/uploads\/[0-9a-f-]{36}\.webp$/);
   const respons = await page.request.get(src!);
   expect(respons.headers()["content-type"]).toBe("image/webp");
