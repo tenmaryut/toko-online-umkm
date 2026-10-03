@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Drip Bag Arabika isi 10">
+  <title>Ilustrasi kemasan Drip Bag Arabika isi 10</title>
+  <rect width="600" height="600" fill="#DDE3E6"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M200 196 L252 162 L432 162 L380 196 Z" fill="#F6F2E9"/>
+  <path d="M200 196 L252 162 L432 162 L380 196 Z" fill="#fff" opacity="0.25"/>
+  <path d="M380 196 L432 162 L432 462 L380 496 Z" fill="#F6F2E9"/>
+  <path d="M380 196 L432 162 L432 462 L380 496 Z" fill="#000" opacity="0.16"/>
+  <rect x="200" y="196" width="180" height="300" fill="#F6F2E9"/>
+  <rect x="200" y="276" width="180" height="140" fill="#34503B"/>
+  <path d="M380 276 L432 242 L432 382 L380 416 Z" fill="#34503B"/>
+  <path d="M380 276 L432 242 L432 382 L380 416 Z" fill="#000" opacity="0.16"/>
+  <g transform="translate(290 330) scale(0.95) rotate(-28)"><ellipse rx="25" ry="35" fill="#F6F2E9"/><path d="M0 -31 C -13 -12 13 12 0 31" stroke="#34503B" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+  <rect x="238" y="380" width="104" height="9" rx="4.5" fill="#F6F2E9" opacity="0.85"/><rect x="253.6" y="396" width="72.8" height="7" rx="3.5" fill="#F6F2E9" opacity="0.55"/>
+  <rect x="218" y="214" width="70" height="10" rx="5" fill="#34503B" opacity="0.8"/>
+</svg>

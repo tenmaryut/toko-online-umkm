@@ -1,0 +1,44 @@
+# Reset data demo Lumbung Kabut: pesanan, akun pengunjung, dan unggahan dihapus lalu data demo diisi ulang.
+# Admin asli dipertahankan. Dijalankan oleh web-toko-online-umkm-reset.timer.
+[Unit]
+Description=Reset data demo Lumbung Kabut
+After=web-toko-online-umkm.service
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+User=web-toko-online-umkm
+Group=web-toko-online-umkm
+StateDirectory=web-toko-online-umkm
+StateDirectoryMode=0750
+WorkingDirectory=/srv/web/toko-online-umkm
+Environment=NODE_ENV=production TZ=Asia/Jakarta
+Environment=DATABASE_PATH=/var/lib/web-toko-online-umkm/toko.db UPLOAD_DIR=/var/lib/web-toko-online-umkm/uploads
+Environment=MIGRATIONS_DIR=/srv/web/toko-online-umkm/drizzle
+ExecStart=/usr/bin/node /srv/web/toko-online-umkm/scripts/reset-demo.mjs
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateNetwork=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallErrorNumber=EPERM
+UMask=0027

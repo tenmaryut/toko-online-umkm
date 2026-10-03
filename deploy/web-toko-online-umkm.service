@@ -1,0 +1,62 @@
+# Lumbung Kabut (toko-online-umkm): server Next.js standalone di 127.0.0.1:3003, di belakang Caddy.
+# Sumber: deploy/web-toko-online-umkm.service di repo; dipasang oleh deploy/deploy.sh.
+[Unit]
+Description=Lumbung Kabut - toko online UMKM demo (Next.js)
+After=network.target
+
+[Service]
+Type=simple
+# Pengguna dinamis non-root. Nama User= sengaja eksplisit agar timer reset memakai UID yang sama.
+DynamicUser=yes
+User=web-toko-online-umkm
+Group=web-toko-online-umkm
+StateDirectory=web-toko-online-umkm
+StateDirectoryMode=0750
+CacheDirectory=web-toko-online-umkm
+WorkingDirectory=/srv/web/toko-online-umkm
+EnvironmentFile=/etc/web-toko-online-umkm/env
+Environment=NODE_ENV=production PORT=3003 HOSTNAME=127.0.0.1 TZ=Asia/Jakarta NEXT_TELEMETRY_DISABLED=1
+Environment=DATABASE_PATH=/var/lib/web-toko-online-umkm/toko.db UPLOAD_DIR=/var/lib/web-toko-online-umkm/uploads
+Environment=MIGRATIONS_DIR=/srv/web/toko-online-umkm/drizzle
+# Kredensial admin asli dibaca systemd (root) lalu diberikan ke layanan lewat $CREDENTIALS_DIRECTORY.
+LoadCredential=admin:/root/tenma-ws/portofolio/rahasia/toko-online-umkm.txt
+ExecStartPre=/usr/bin/node /srv/web/toko-online-umkm/scripts/db-setup.mjs
+ExecStart=/usr/bin/node /srv/web/toko-online-umkm/server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+# Pengamanan
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RemoveIPC=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+# Hanya menerima/menghubungi localhost (Caddy); tidak ada koneksi keluar.
+IPAddressDeny=any
+IPAddressAllow=localhost
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallErrorNumber=EPERM
+UMask=0027
+MemoryMax=768M
+TasksMax=256
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,37 @@
+# Lumbung Kabut (toko-online-umkm): reverse proxy ke Next.js standalone di 127.0.0.1:3003.
+# Template: deploy/toko-online-umkm.caddy.template di repo proyek. Alamat situs diisi dari TOKO_URL
+# (domain.env) saat deploy; jangan ubah file hasil di /etc/caddy/sites secara langsung.
+# Dirender dan dipasang oleh deploy/deploy.sh.
+
+# Baris pertama blok situs wajib "import gerbang_staging" (snippet di /etc/caddy/Caddyfile, dikelola agen utama).
+__TOKO_HOST__ {
+	import gerbang_staging
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		# CSP lengkap (dengan nonce per request) dikirim aplikasi dari src/proxy.ts.
+		# Ini cadangan untuk respons yang tidak membawa CSP sendiri (mis. file statis).
+		?Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+		-Server
+		-X-Powered-By
+	}
+
+	# Aset ber-hash Next.js dan ilustrasi produk.
+	@hashed path /_next/static/*
+	header @hashed >Cache-Control "public, max-age=31536000, immutable"
+	@ilustrasi path /images/* /icon.svg
+	header @ilustrasi >Cache-Control "public, max-age=604800"
+
+	# Batas ukuran body (unggah gambar maks. 2 MB + data form).
+	request_body {
+		max_size 4MB
+	}
+
+	reverse_proxy 127.0.0.1:3003
+}

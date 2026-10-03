@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Rempeyek Kacang 150 g">
+  <title>Ilustrasi kemasan Rempeyek Kacang 150 g</title>
+  <rect width="600" height="600" fill="#EFE6D2"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M196 158 L206 146 L216 158 L226 146 L236 158 L246 146 L256 158 L266 146 L276 158 L286 146 L296 158 L306 146 L316 158 L326 146 L336 158 L346 146 L356 158 L366 146 L376 158 L386 146 L396 158 L404 150
+    C 418 250 418 390 404 486 L396 494 L386 482 L376 494 L366 482 L356 494 L346 482 L336 494 L326 482 L316 494 L306 482 L296 494 L286 482 L276 494 L266 482 L256 494 L246 482 L236 494 L226 482 L216 494 L206 482 L196 490
+    C 182 390 182 250 196 158 Z" fill="#D9C08F"/>
+  <path d="M196 170 H404 M196 470 H404" stroke="#000" stroke-opacity="0.14" stroke-width="10"/>
+  <path d="M220 200 C 214 280 214 360 222 440" stroke="#fff" stroke-opacity="0.35" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M378 210 C 384 260 384 300 380 330" stroke="#fff" stroke-opacity="0.25" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <rect x="226" y="236" width="148" height="150" rx="74" fill="#34503B"/>
+  <g transform="translate(300 300) scale(1.05) rotate(-10)"><path d="M-32 4 C -34 -28 18 -42 32 -10 C 38 6 24 14 12 4 C 2 -8 -14 -6 -14 8 C -14 22 -30 28 -32 4 Z" fill="#F6F2E9"/><path d="M-24 2 C -22 -18 6 -28 22 -14" stroke="#34503B" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/></g>
+  <rect x="241" y="408" width="118" height="9" rx="4.5" fill="#34503B" opacity="0.85"/><rect x="258.7" y="424" width="82.6" height="7" rx="3.5" fill="#34503B" opacity="0.55"/>
+</svg>

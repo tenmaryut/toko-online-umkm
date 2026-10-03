@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Kopi Gula Aren Siap Seduh isi 10">
+  <title>Ilustrasi kemasan Kopi Gula Aren Siap Seduh isi 10</title>
+  <rect width="600" height="600" fill="#EADBC6"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M200 150 L207.1 142 L214.3 150 L221.4 142 L228.6 150 L235.7 142 L242.9 150 L250 142 L257.1 150 L264.3 142 L271.4 150 L278.6 142 L285.7 150 L292.9 142 L300 150 L307.1 142 L314.3 150 L321.4 142 L328.6 150 L335.7 142 L342.9 150 L350 142 L357.1 150 L364.3 142 L371.4 150 L378.6 142 L385.7 150 L392.9 142 L400 150 L400 482 L392.9 490 L385.7 482 L378.6 490 L371.4 482 L364.3 490 L357.1 482 L350 490 L342.9 482 L335.7 490 L328.6 482 L321.4 490 L314.3 482 L307.1 490 L300 482 L292.9 490 L285.7 482 L278.6 490 L271.4 482 L264.3 490 L257.1 482 L250 490 L242.9 482 L235.7 490 L228.6 482 L221.4 490 L214.3 482 L207.1 490 L200 482 Z" fill="#7A4A2A"/>
+  <rect x="200" y="170" width="200" height="14" fill="#000" opacity="0.12"/>
+  <rect x="200" y="448" width="200" height="14" fill="#000" opacity="0.12"/>
+  <path d="M220 200 L224 440" stroke="#fff" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="300" cy="310" r="74" fill="#E8C07A"/>
+  <g transform="translate(300 306) scale(1.05)"><path d="M0 -40 C 14 -18 28 -2 28 14 A28 28 0 0 1 -28 14 C -28 -2 -14 -18 0 -40 Z" fill="#7A4A2A"/><path d="M-12 12 A12 12 0 0 0 0 24" stroke="#E8C07A" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+  <rect x="240" y="404" width="120" height="9" rx="4.5" fill="#E8C07A" opacity="0.85"/><rect x="258" y="420" width="84" height="7" rx="3.5" fill="#E8C07A" opacity="0.55"/>
+</svg>

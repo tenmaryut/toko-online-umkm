@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Cangkir Enamel Lumbung Kabut">
+  <title>Ilustrasi kemasan Cangkir Enamel Lumbung Kabut</title>
+  <rect width="600" height="600" fill="#DDE5EA"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M398 290 C 460 290 462 400 396 404" fill="none" stroke="#F6F2E9" stroke-width="22" stroke-linecap="round"/>
+  <path d="M398 290 C 460 290 462 400 396 404" fill="none" stroke="#2E4A5C" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  <path d="M194 236 H406 L392 470 Q390 494 366 494 H234 Q210 494 208 470 Z" fill="#F6F2E9"/>
+  <path d="M208 470 Q210 494 234 494 H366 Q390 494 392 470" fill="none" stroke="#2E4A5C" stroke-width="8"/>
+  <ellipse cx="300" cy="236" rx="106" ry="24" fill="#2E4A5C"/>
+  <ellipse cx="300" cy="238" rx="94" ry="17" fill="#3B2A20"/>
+  <path d="M222 268 L232 456" stroke="#fff" stroke-opacity="0.5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M244 402 C 270 380 300 392 326 372 C 340 362 356 366 368 360 L366 430 H246 Z" fill="#34503B" opacity="0.35"/>
+  <g transform="translate(304 352) scale(0.85)"><path d="M-40 6 L0 -38 L40 6 Z" fill="#34503B"/><path d="M-22 6 h44 v20 h-44 Z" fill="#34503B" opacity="0.85"/><path d="M-16 26 v12 M16 26 v12" stroke="#34503B" stroke-width="5" stroke-linecap="round"/><path d="M-8 -6 h16" stroke="#F6F2E9" stroke-width="3" stroke-linecap="round"/></g>
+</svg>

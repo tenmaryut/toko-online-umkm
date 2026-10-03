@@ -1,0 +1,10 @@
+[Unit]
+Description=Reset data demo Lumbung Kabut setiap pukul 00.00 WIB
+
+[Timer]
+OnCalendar=*-*-* 00:00:00 Asia/Jakarta
+Persistent=true
+Unit=web-toko-online-umkm-reset.service
+
+[Install]
+WantedBy=timers.target

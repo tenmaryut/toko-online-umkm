@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Gula Aren Cair 350 ml">
+  <title>Ilustrasi kemasan Gula Aren Cair 350 ml</title>
+  <rect width="600" height="600" fill="#F3E6CF"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <rect x="266" y="116" width="68" height="44" rx="8" fill="#8A4B17"/>
+  <rect x="266" y="116" width="68" height="44" rx="8" fill="#000" opacity="0.2"/>
+  <path d="M276 158 H324 V206 C 324 232 380 240 380 286 V474 Q380 498 356 498 H244 Q220 498 220 474 V286 C 220 240 276 232 276 206 Z" fill="#8A4B17"/>
+  <path d="M276 158 H324 V206 C 324 232 380 240 380 286 V474 Q380 498 356 498 H244 Q220 498 220 474 V286 C 220 240 276 232 276 206 Z" fill="#fff" opacity="0.14"/>
+  <path d="M236 292 V466" stroke="#fff" stroke-opacity="0.45" stroke-width="9" stroke-linecap="round"/>
+  <rect x="220" y="318" width="160" height="118" fill="#F3E3C3"/>
+  <g transform="translate(300 360) scale(0.85)"><path d="M0 -40 C 14 -18 28 -2 28 14 A28 28 0 0 1 -28 14 C -28 -2 -14 -18 0 -40 Z" fill="#8A4B17"/><path d="M-12 12 A12 12 0 0 0 0 24" stroke="#F3E3C3" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+  <rect x="252" y="404" width="96" height="9" rx="4.5" fill="#8A4B17" opacity="0.85"/><rect x="266.4" y="420" width="67.2" height="7" rx="3.5" fill="#8A4B17" opacity="0.55"/>
+</svg>

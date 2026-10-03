@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/*
+ * Identitas visual Lumbung Kabut: kertas krem, cokelat kopi, terakota tanah, hijau lumut,
+ * kuning kunyit, dan bukit berkabut. Kontras teks utama sudah dicek minimal 4.5:1 (WCAG AA).
+ */
+@theme {
+  --color-kertas: #f6f2e9;
+  --color-kertas-2: #efe8da;
+  --color-kertas-3: #e6dccb;
+  --color-arang: #241c15;
+  --color-arang-2: #574b40;
+  --color-garis: #ddd3c1;
+  --color-tanah: #9c4524;
+  --color-tanah-tua: #7e361b;
+  --color-tanah-muda: #f4e1d6;
+  --color-lumut: #34503b;
+  --color-lumut-tua: #233628;
+  --color-lumut-muda: #dce5d5;
+  --color-kunyit: #e3b04b;
+  --color-kunyit-muda: #f7ebcb;
+  --color-kabut: #8a9a93;
+  --color-bahaya: #a3271b;
+  --color-bahaya-muda: #f8dcd7;
+
+  --radius-kartu: 1.25rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-kertas);
+  color: var(--color-arang);
+  font-family: var(--font-sans);
+  /* Spasi bawaan Plus Jakarta Sans hanya ~0,19 em sehingga "per zona" terbaca "perzona";
+     ditambah 0,1 em supaya jarak antarkata setara font teks pada umumnya (Arial ~0,28 em). */
+  word-spacing: 0.1em;
+}
+
+/* Elemen form tidak mewarisi word-spacing dari body secara bawaan browser. */
+button,
+input,
+select,
+textarea,
+optgroup {
+  word-spacing: inherit;
+}
+
+.font-display {
+  word-spacing: normal;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-tanah);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-kunyit-muda);
+}
+
+@utility wadah {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+}
+
+@utility tombol {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility tombol-utama {
+  @apply tombol bg-tanah text-white hover:bg-tanah-tua;
+}
+@utility tombol-lumut {
+  @apply tombol bg-lumut text-kertas hover:bg-lumut-tua;
+}
+@utility tombol-garis {
+  @apply tombol border border-arang/25 bg-white/60 text-arang hover:border-arang/50 hover:bg-white;
+}
+@utility tombol-bahaya {
+  @apply tombol border border-bahaya/40 bg-white text-bahaya hover:bg-bahaya-muda;
+}
+@utility tombol-teks {
+  @apply inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-tanah underline-offset-4 hover:underline;
+}
+
+@utility kartu {
+  @apply rounded-[var(--radius-kartu)] border border-garis bg-white/70;
+}
+
+@utility label-form {
+  @apply mb-1.5 block text-sm font-semibold text-arang;
+}
+@utility masukan {
+  @apply block w-full rounded-xl border border-arang/25 bg-white px-3.5 py-2.5 text-base text-arang placeholder:text-arang-2/80 focus:border-tanah focus:ring-2 focus:ring-tanah/30 focus:outline-none aria-[invalid=true]:border-bahaya;
+}
+@utility galat-form {
+  @apply mt-1.5 text-sm font-medium text-bahaya;
+}
+
+@utility judul-bagian {
+  @apply font-display text-2xl font-semibold tracking-tight text-arang sm:text-3xl;
+}
+
+/* Motif anyaman bambu yang halus untuk latar bagian tertentu. */
+@utility latar-anyaman {
+  background-color: var(--color-kertas-2);
+  background-image:
+    repeating-linear-gradient(45deg, rgb(36 28 21 / 0.035) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(-45deg, rgb(36 28 21 / 0.035) 0 6px, transparent 6px 12px);
+}
+
+/* Honeypot anti-spam: tersembunyi dari manusia dan pembaca layar, tetap ada untuk bot. */
+.kolom-jebakan {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------
+ * Animasi (putaran 2). Hanya transform & opacity, dan HANYA aktif bila pengguna tidak meminta
+ * gerak dikurangi. Tanpa CSS animasi pun semua konten tetap tampil penuh.
+ * ------------------------------------------------------------------ */
+@keyframes lk-muncul {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+}
+@keyframes lk-pantul {
+  0% { transform: scale(1); }
+  30% { transform: translateY(-4px) scale(1.4); }
+  55% { transform: scale(0.9); }
+  75% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+@keyframes lk-centang {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+}
+@keyframes lk-kilau {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+@keyframes lk-geser-kanan {
+  from { transform: translateX(calc(100% + 1.5rem)); }
+}
+@keyframes lk-geser-atas {
+  from { transform: translateY(calc(100% + 1.5rem)); }
+}
+@keyframes lk-toast {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+}
+@keyframes lk-tumbuh-y {
+  from { transform: scaleY(0); }
+}
+@keyframes lk-isi-x {
+  from { transform: scaleX(0); }
+}
+@keyframes lk-denyut {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(1.9); opacity: 0; }
+}
+@keyframes lk-keluar {
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Grid produk muncul bertahap (saat dimuat dan saat filter berubah). */
+  .muncul-bertahap > * {
+    animation: lk-muncul 460ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(min(var(--urutan, 0), 11) * 45ms);
+  }
+  /* Lencana jumlah keranjang memantul saat isinya bertambah. */
+  .lencana-pantul {
+    animation: lk-pantul 650ms cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+  /* Ikon centang pada tombol "Ditambahkan". */
+  .centang-masuk {
+    animation: lk-centang 420ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  }
+  /* Keranjang mini: meluncur dari kanan (layar lebar) atau dari bawah (layar kecil). */
+  .keranjang-mini-masuk {
+    animation: lk-geser-atas 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  @media (min-width: 640px) {
+    .keranjang-mini-masuk {
+      animation-name: lk-geser-kanan;
+    }
+  }
+  .keluar {
+    animation: lk-keluar 220ms ease-in both;
+  }
+  .toast-masuk {
+    animation: lk-toast 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  /* Skeleton: kilau bergerak (transform) di atas blok abu. */
+  .kerangka::after {
+    animation: lk-kilau 1.4s ease-in-out infinite;
+  }
+  /* Progres checkout dan linimasa pesanan. */
+  .progres-isi {
+    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .garis-tumbuh {
+    animation: lk-tumbuh-y 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--urutan, 0) * 180ms + 120ms);
+  }
+  .titik-muncul {
+    animation: lk-centang 380ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+    animation-delay: calc(var(--urutan, 0) * 180ms);
+  }
+  .denyut::before {
+    animation: lk-denyut 2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  }
+  /* Grafik admin: kolom tumbuh bertahap dari garis dasar. */
+  .batang-tumbuh {
+    animation: lk-tumbuh-y 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--urutan, 0) * 40ms + 150ms);
+  }
+  .langkah-aktif {
+    animation: lk-centang 380ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  }
+}
+
+/* Lapisan kilau skeleton (diam bila gerak dikurangi). */
+.kerangka {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-kertas-3);
+}
+.kerangka::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+}
+/* Elemen .denyut harus diposisikan (mis. kelas absolute) agar cincinnya menempel. */
+.denyut::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

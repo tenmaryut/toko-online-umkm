@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Kopi Tubruk Lumbung 500 g">
+  <title>Ilustrasi kemasan Kopi Tubruk Lumbung 500 g</title>
+  <rect width="600" height="600" fill="#F1E1D2"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M190 160 L410 160 L422 492 Q300 514 178 492 Z" fill="#9C4524"/>
+  <rect x="186" y="134" width="228" height="38" rx="5" fill="#9C4524"/>
+  <rect x="186" y="134" width="228" height="38" rx="5" fill="#000" opacity="0.13"/>
+  <path d="M194 182 H406" stroke="#000" stroke-opacity="0.18" stroke-width="3" stroke-dasharray="7 6"/>
+  <path d="M208 200 L218 470" stroke="#fff" stroke-opacity="0.22" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="300" cy="222" r="10" fill="#000" opacity="0.14"/>
+  <rect x="218" y="252" width="164" height="176" rx="16" fill="#F6F2E9"/>
+  <g transform="translate(300 316) scale(1.05)"><path d="M-40 6 L0 -38 L40 6 Z" fill="#9C4524"/><path d="M-22 6 h44 v20 h-44 Z" fill="#9C4524" opacity="0.85"/><path d="M-16 26 v12 M16 26 v12" stroke="#9C4524" stroke-width="5" stroke-linecap="round"/><path d="M-8 -6 h16" stroke="#F6F2E9" stroke-width="3" stroke-linecap="round"/></g>
+  <rect x="244" y="382" width="112" height="9" rx="4.5" fill="#9C4524" opacity="0.85"/><rect x="260.8" y="398" width="78.4" height="7" rx="3.5" fill="#9C4524" opacity="0.55"/>
+</svg>

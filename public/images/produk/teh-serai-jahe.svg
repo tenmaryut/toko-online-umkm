@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Teh Serai Jahe isi 20">
+  <title>Ilustrasi kemasan Teh Serai Jahe isi 20</title>
+  <rect width="600" height="600" fill="#E4ECD9"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <path d="M200 196 L252 162 L432 162 L380 196 Z" fill="#6E8B4E"/>
+  <path d="M200 196 L252 162 L432 162 L380 196 Z" fill="#fff" opacity="0.25"/>
+  <path d="M380 196 L432 162 L432 462 L380 496 Z" fill="#6E8B4E"/>
+  <path d="M380 196 L432 162 L432 462 L380 496 Z" fill="#000" opacity="0.16"/>
+  <rect x="200" y="196" width="180" height="300" fill="#6E8B4E"/>
+  <rect x="200" y="276" width="180" height="140" fill="#F6F2E9"/>
+  <path d="M380 276 L432 242 L432 382 L380 416 Z" fill="#F6F2E9"/>
+  <path d="M380 276 L432 242 L432 382 L380 416 Z" fill="#000" opacity="0.16"/>
+  <g transform="translate(290 330) scale(0.95)"><path d="M-30 30 C -32 -18 8 -40 36 -38 C 40 -6 18 32 -30 30 Z" fill="#4C6A36"/><path d="M-26 26 C -6 6 12 -12 30 -32" stroke="#F6F2E9" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+  <rect x="238" y="380" width="104" height="9" rx="4.5" fill="#4C6A36" opacity="0.85"/><rect x="253.6" y="396" width="72.8" height="7" rx="3.5" fill="#4C6A36" opacity="0.55"/>
+  <rect x="218" y="214" width="70" height="10" rx="5" fill="#F6F2E9" opacity="0.8"/>
+</svg>

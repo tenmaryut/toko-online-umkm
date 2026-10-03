@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Tas Belanja Kain Lurik">
+  <title>Ilustrasi kemasan Tas Belanja Kain Lurik</title>
+  <rect width="600" height="600" fill="#DCE5D5"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <defs><clipPath id="tas"><path d="M188 240 H412 L428 496 H172 Z"/></clipPath></defs>
+  <path d="M236 246 C 236 150 290 140 300 140 C 310 140 364 150 364 246" fill="none" stroke="#34503B" stroke-width="16" stroke-linecap="round"/>
+  <path d="M236 246 C 236 150 290 140 300 140 C 310 140 364 150 364 246" fill="none" stroke="#000" stroke-opacity="0.15" stroke-width="16" stroke-linecap="round"/>
+  <path d="M188 240 H412 L428 496 H172 Z" fill="#34503B"/>
+  <g clip-path="url(#tas)"><rect x="180" y="230" width="6" height="280" fill="#C98B4B" opacity="0.85"/><rect x="202" y="230" width="3" height="280" fill="#F3E3C3" opacity="0.85"/><rect x="224" y="230" width="3" height="280" fill="#C98B4B" opacity="0.85"/><rect x="246" y="230" width="6" height="280" fill="#F3E3C3" opacity="0.85"/><rect x="268" y="230" width="3" height="280" fill="#C98B4B" opacity="0.85"/><rect x="290" y="230" width="3" height="280" fill="#F3E3C3" opacity="0.85"/><rect x="312" y="230" width="6" height="280" fill="#C98B4B" opacity="0.85"/><rect x="334" y="230" width="3" height="280" fill="#F3E3C3" opacity="0.85"/><rect x="356" y="230" width="3" height="280" fill="#C98B4B" opacity="0.85"/><rect x="378" y="230" width="6" height="280" fill="#F3E3C3" opacity="0.85"/><rect x="400" y="230" width="3" height="280" fill="#C98B4B" opacity="0.85"/><rect x="422" y="230" width="3" height="280" fill="#F3E3C3" opacity="0.85"/></g>
+  <rect x="188" y="240" width="224" height="20" fill="#000" opacity="0.14"/>
+  <rect x="318" y="392" width="68" height="76" rx="8" fill="#F3E3C3"/>
+  <g transform="translate(352 432) scale(0.6)"><path d="M-40 6 L0 -38 L40 6 Z" fill="#34503B"/><path d="M-22 6 h44 v20 h-44 Z" fill="#34503B" opacity="0.85"/><path d="M-16 26 v12 M16 26 v12" stroke="#34503B" stroke-width="5" stroke-linecap="round"/><path d="M-8 -6 h16" stroke="#F3E3C3" stroke-width="3" stroke-linecap="round"/></g>
+</svg>

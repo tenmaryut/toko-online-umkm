@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Ilustrasi kemasan Tampah Anyaman Bambu 40 cm">
+  <title>Ilustrasi kemasan Tampah Anyaman Bambu 40 cm</title>
+  <rect width="600" height="600" fill="#E7E1D3"/>
+  <circle cx="474" cy="132" r="54" fill="#fff" opacity="0.4"/>
+  <path d="M0 400 C 110 352 210 380 320 344 C 420 312 520 330 600 360 V600 H0 Z" fill="#fff" opacity="0.32"/>
+  <path d="M0 456 C 150 424 270 446 380 420 C 470 400 550 410 600 424 V600 H0 Z" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="508" rx="160" ry="18" fill="#2B2118" opacity="0.13"/>
+  <defs><clipPath id="tampah"><ellipse cx="300" cy="340" rx="196" ry="138"/></clipPath></defs>
+  <ellipse cx="300" cy="352" rx="214" ry="152" fill="#7A5A2E"/>
+  <ellipse cx="300" cy="340" rx="212" ry="150" fill="#9B7440"/>
+  <ellipse cx="300" cy="340" rx="196" ry="138" fill="#C9A46B"/>
+  <g clip-path="url(#tampah)" stroke="#9B7440" stroke-width="7" stroke-opacity="0.55"><path d="M70 170 L250 510" /><path d="M250 170 L70 510" /><path d="M102 170 L282 510" /><path d="M282 170 L102 510" /><path d="M134 170 L314 510" /><path d="M314 170 L134 510" /><path d="M166 170 L346 510" /><path d="M346 170 L166 510" /><path d="M198 170 L378 510" /><path d="M378 170 L198 510" /><path d="M230 170 L410 510" /><path d="M410 170 L230 510" /><path d="M262 170 L442 510" /><path d="M442 170 L262 510" /><path d="M294 170 L474 510" /><path d="M474 170 L294 510" /><path d="M326 170 L506 510" /><path d="M506 170 L326 510" /><path d="M358 170 L538 510" /><path d="M538 170 L358 510" /><path d="M390 170 L570 510" /><path d="M570 170 L390 510" /><path d="M422 170 L602 510" /><path d="M602 170 L422 510" /><path d="M454 170 L634 510" /><path d="M634 170 L454 510" /><path d="M486 170 L666 510" /><path d="M666 170 L486 510" /><path d="M518 170 L698 510" /><path d="M698 170 L518 510" /><path d="M550 170 L730 510" /><path d="M730 170 L550 510" /></g>
+  <ellipse cx="300" cy="340" rx="196" ry="138" fill="none" stroke="#7A5A2E" stroke-width="6" opacity="0.5"/>
+  <ellipse cx="300" cy="340" rx="212" ry="150" fill="none" stroke="#7A5A2E" stroke-width="3" opacity="0.6"/>
+</svg>
