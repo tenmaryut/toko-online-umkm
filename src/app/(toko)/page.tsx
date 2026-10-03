@@ -90,7 +90,7 @@ export default function Beranda() {
       </section>
 
       {/* Kategori */}
-      <section aria-labelledby="judul-kategori" className="latar-anyaman tunda-render py-14">
+      <section aria-labelledby="judul-kategori" className="latar-anyaman py-14">
         <div className="wadah">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -131,7 +131,7 @@ export default function Beranda() {
       </section>
 
       {/* Produk pilihan */}
-      <section aria-labelledby="judul-pilihan" className="wadah tunda-render py-14">
+      <section aria-labelledby="judul-pilihan" className="wadah py-14">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="judul-pilihan" className="judul-bagian">
@@ -149,7 +149,7 @@ export default function Beranda() {
       </section>
 
       {/* Cara kerja demo */}
-      <section id="cara-kerja" aria-labelledby="judul-cara-kerja" className="tunda-render bg-lumut text-kertas">
+      <section id="cara-kerja" aria-labelledby="judul-cara-kerja" className="bg-lumut text-kertas">
         <div className="wadah grid grid-cols-1 gap-10 py-14 lg:grid-cols-[1.2fr_minmax(0,1fr)]">
           <div>
             <h2 id="judul-cara-kerja" className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">

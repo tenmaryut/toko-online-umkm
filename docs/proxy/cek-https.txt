@@ -1,0 +1,17 @@
+# Cek skema https di balik Tailscale Funnel → Caddy → aplikasi (deployment final)
+# 2026-10-03T10:51:44+07:00
+Target: https://toko.tail482cb9.ts.net
+┌─────────┬──────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
+│ (index) │ cek                                      │ nilai                                                                                                            │ lulus │
+├─────────┼──────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
+│ 0       │ 'GET /akun tanpa sesi → redirect'        │ '307 Location: /masuk?kembali=%2Fakun'                                                                           │ 'ya'  │
+│ 1       │ 'Login demo → cookie sesi'               │ '__Secure-lk.session_token; Path=/; Expires=Sat, 10 Oct 2026 03:51:44 GMT; Max-Age=604800; Secure; HttpOnly; Sa' │ 'ya'  │
+│ 2       │ 'sitemap.xml <loc> pertama'              │ 'https://toko.tail482cb9.ts.net/'                                                                                │ 'ya'  │
+│ 3       │ 'canonical halaman produk'               │ 'https://toko.tail482cb9.ts.net/produk/kopi-arabika-lereng-pagi'                                                 │ 'ya'  │
+│ 4       │ 'og:image halaman produk'                │ 'https://toko.tail482cb9.ts.net/og/produk/kopi-arabika-lereng-pagi'                                              │ 'ya'  │
+│ 5       │ 'sumber http:// di HTML'                 │ 'tidak ada'                                                                                                      │ 'ya'  │
+│ 6       │ 'CSP beranda: upgrade-insecure-requests' │ 'ada'                                                                                                            │ 'ya'  │
+│ 7       │ 'HSTS (dari Caddy)'                      │ 'max-age=31536000; includeSubDomains'                                                                            │ 'ya'  │
+└─────────┴──────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
+LULUS: skema https dikenali dengan benar di balik proxy.
+exit=0

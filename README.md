@@ -41,6 +41,7 @@ npm run build                   # build standalone (diperlukan oleh test e2e)
 npm run test:e2e                # Playwright: jelajah → keranjang → checkout → admin ubah status, keamanan, SEO, gerak, proxy
 npm run test:e2e:publik         # test e2e yang sama terhadap URL publik (TOKO_URL dari domain.env)
 npm run uji-rate-limit          # uji rate limit per pengunjung lewat http://127.0.0.1:80 (Caddy) dengan X-Forwarded-For berbeda
+npm run cek-https               # cek cookie Secure, redirect, URL absolut, dan mixed content di URL publik
 npm run screenshots             # cek responsif 360–1440 px + screenshot ke docs/screenshots/
 npm run rekam-animasi           # rekaman WebM animasi utama ke docs/animasi/
 ```
@@ -70,7 +71,7 @@ pengunjung → Funnel → Caddy di `127.0.0.1:80` (mode tunnel, `trusted_proxies
 
 - **IP pengunjung asli**: proxy yang dipercaya hanya loopback (Funnel dan Caddy di server yang sama; aplikasi pun hanya mendengarkan 127.0.0.1). `ipKlien()` di `src/lib/rate-limit.ts` menelusuri `X-Forwarded-For` dari kanan dan melewati entri loopback, jadi IP yang ditambahkan Funnel yang dipakai untuk rate limit dan sesi. Nilai palsu yang dikirim pengunjung di sisi kiri header diabaikan. Header `Tailscale-User-*` dibuang Caddy dan tidak dipakai aplikasi.
 - **Skema https**: semua URL absolut (canonical, Open Graph, sitemap, data terstruktur) dibangun dari `SITE_URL` (https, dari domain.env); cookie sesi `__Secure-lk.session_token` dan cookie keranjang memakai atribut `Secure`; redirect memakai path relatif sehingga tetap di origin publik; CSP memuat `upgrade-insecure-requests`, dan halaman tidak memuat aset `http://`.
-- **Bukti**: `npm run uji-rate-limit` (hasil sebelum/sesudah perbaikan di `docs/proxy/`) dan `tests/e2e/proxy.spec.ts` (cookie `Secure`, URL absolut, redirect, tanpa mixed content).
+- **Bukti**: `npm run uji-rate-limit` dan `npm run cek-https` (hasil di `docs/proxy/`), serta `tests/e2e/proxy.spec.ts` (cookie `Secure`, URL absolut, redirect, tanpa mixed content).
 
 ## Pindah domain
 

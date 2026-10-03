@@ -1,6 +1,6 @@
-# Uji rate limit per pengunjung SESUDAH perbaikan (IP pengunjung = entri paling kanan yang bukan proxy tepercaya 127.0.0.1)
-# 2026-10-03T10:33:11+07:00
-Target: http://127.0.0.1:80 (Host: toko.tail482cb9.ts.net), email uji: penebak-muru77dc@contoh.test
+# Uji rate limit per pengunjung pada deployment final (IP pengunjung = entri paling kanan yang bukan proxy tepercaya 127.0.0.1)
+# 2026-10-03T10:48:58+07:00
+Target: http://127.0.0.1:80 (Host: toko.tail482cb9.ts.net), email uji: penebak-mururi4e@contoh.test
 Batas: 5 percobaan per 15 menit per (IP pengunjung + email), 30 per 15 menit per IP.
 
 ┌─────────┬──────────────────────┬────────────────────────────┬───────────┬─────────────────────────────────────────────┐
