@@ -29,6 +29,11 @@ http://__TOKO_HOST__ {
 	@ilustrasi path /images/* /icon.svg
 	header @ilustrasi >Cache-Control "public, max-age=604800"
 
+	# Optimizer gambar Next.js tidak dipakai (images.unoptimized). Permintaannya dijawab 404 di sini
+	# agar tidak sampai ke aplikasi, jadi celah di optimizer tidak bisa dijangkau dari luar.
+	@optimizer_gambar path /_next/image /_next/image/*
+	respond @optimizer_gambar 404
+
 	# Batas ukuran body (unggah gambar maks. 2 MB + data form).
 	request_body {
 		max_size 4MB

@@ -27,6 +27,8 @@ ExecStart=/usr/bin/node /srv/web/toko-online-umkm/server.js
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=20
+# Next.js keluar dengan kode 143 (128 + SIGTERM) saat dihentikan systemd; itu berhenti normal.
+SuccessExitStatus=143
 
 # Pengamanan
 NoNewPrivileges=yes
